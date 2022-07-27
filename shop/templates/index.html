@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mt-5 mb-5 text-center">Прайс-лист</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Напиток</th>
+      <th scope="col">Цена</th>
+      <th scope="col">Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% if item_list %}
+    <ul>
+    {% for item in item_list %}
+    <tr>
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.name }}</td>
+      <td>{{ item.price }}</td>
+      <td><a href="{% url 'detail' item.id %}">Подробнее</a></td>
+    </tr>
+  {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+  </tbody>
+</table>
+{% endblock content %}
+
